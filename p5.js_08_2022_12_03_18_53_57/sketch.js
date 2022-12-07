@@ -1,4 +1,10 @@
-
+function setup() {
+  createCanvas(400, 400);
+  criaQuadrado(10)
+  console.log(listaDeQuadrados);
+  
+  
+}
 class quadrado{
   constructor(x,y,z, cor='red'){
     this.x=x;
@@ -36,22 +42,19 @@ class quadrado{
   }
   }
 }
-  let s1 = new quadrado(0,200,50, 'black');
-  let s2 = new quadrado(200,0,50, 'pink');
-  let s3 = new quadrado(0,0,50);
-function setup() {
-  createCanvas(400, 400);
-  colorMode(HSB);
-  noStroke();
-  rectMode(CENTER);
+const listaDeQuadrados = [];
+function criaQuadrado(x) {
+    for(let i=0; i<x; i++) {
+        listaDeQuadrados.push(new quadrado(random(0, 400),random(0,400), 50));
+    }    
 }
 
 function draw() {
   background(220);
-  s1.aparecer();
-  s1.mover();
-  s2.aparecer();
-  s2.mover();
-  s3.aparecer();
-  s3.mover();
+  listaDeQuadrados.map((ell, index) => {
+    ell.aparecer()
+    ell.mover();
+  })
+
+  
 }
